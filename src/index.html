@@ -1,17 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
-</head>
+<!-- saved from url=(0141)https://pngkg.blob.core.windows.net/hprecording/DEVA5/deva.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEVA</title>
+    <script src="./deva_files/microsoft.cognitiveservices.speech.sdk.bundle-min.js.download"></script>
+<link href="./deva_files/app.e67c3a8694a15455c2ea.css" rel="stylesheet"><style></style></head>
 
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
-</body>
+    <div id="nn-container" class="nn-container"><iframe width="100%" height="100%" src="./deva_files/index.html" id="unity" style="border: none;"></iframe></div>
+    <div class="container">
+        <div class="chat-content" id="chatContainer">
+            <div id="chatContent"></div>
+        </div>
+        <div class="chat-container">
+            <div class="chat-user-container">
+                <div class="show-history-icon" style="transform: rotate(180deg);" id="showHistoryBtn">
+                    <svg t="1608701485564" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3824" width="36" height="36" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <style type="text/css"></style>
+                        </defs>
+                        <path d="M512 1017.685c279.296 0 505.685-226.417 505.685-505.685C1017.685 232.704 791.268 6.315 512 6.315 232.704 6.315 6.315 232.732 6.315 512c0 279.296 226.417 505.685 505.685 505.685zM313.116 426.44L512 625.323l198.884-198.884a31.602 31.602 0 0 1 44.686 44.686L534.357 692.366a31.602 31.602 0 0 1-44.714 0L268.43 471.126a31.602 31.602 0 0 1 44.658-44.658z" p-id="3825" fill="#000000"></path>
+                    </svg>
+                </div>
+                <div class="chat-user-content" id="dialogContainer"><div class="chat-user-content-btn" style="background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iIzEyOTZkYiIgZD0iTTg0MC41MzMgNDIyLjgyN2E0Mi42NjcgNDIuNjY3IDAgMDE0Mi42NjcgNDIuNjY2IDM4OC4zMSAzODguMzEgMCAwMS0zNDUuNjg1IDM4NS45NjNsLjA4NSAxLjg3N3Y4NS4zMzRINzA0YTQyLjY2NyA0Mi42NjcgMCAwMTQuOTkyIDg1LjAzNEw3MDQgMTAyNEgyNzcuMzMzYTQyLjY2NyA0Mi42NjcgMCAwMS00Ljk5Mi04NS4wMzVsNC45OTItLjI5OGgxNzQuOTM0di04NS4zMzRsLjA4NS0xLjg3N2EzODguMzEgMzg4LjMxIDAgMDEtMzQ1LjY4NS0zODUuOTYzIDQyLjY2NyA0Mi42NjcgMCAwMTg1LjMzMyAwIDMwMi45MzMgMzAyLjkzMyAwIDAwNjA1Ljg2NyAwIDQyLjY2NyA0Mi42NjcgMCAwMTQyLjY2Ni00Mi42NjZ6TTQ5NC45MzMgMGEyNTYgMjU2IDAgMDEyNTYgMjU2djIxMy4zMzNhMjU2IDI1NiAwIDExLTUxMiAwVjI1NmEyNTYgMjU2IDAgMDEyNTYtMjU2eiIvPjwvc3ZnPg==&quot;);"></div><input type="text" placeholder="请输入内容"><div class="chat-user-content-send">发送</div></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function startVoiceInput() {
+            console.log('startVoiceInput click');
+            const btnStartVoiceInput = document.getElementById('btnStartVoiceInput')
+            if (btnStartVoiceInput) {
+                btnStartVoiceInput.click();
+            }
+        }
 
-</html>
+        function stopVoiceInput() {
+            console.log('btnStopVoiceInput click');
+            const btnStopVoiceInput = document.getElementById('btnStopVoiceInput')
+            if (btnStopVoiceInput) {
+                btnStopVoiceInput.click();
+            }
+        }
+    </script>
+<script src="./deva_files/app.dffc75d913656dd19cd3SourceCode.js"></script>
+
+</body></html>
