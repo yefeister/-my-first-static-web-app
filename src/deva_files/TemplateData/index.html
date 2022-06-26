@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- saved from url=(0083)https://ke-test-server.chinaeast2.cloudapp.chinacloudapi.cn/hudun-doctor/index.html -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>Unity WebGL Player | Test2</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop" style="width: 100vw; height: 100vh;">
+      <canvas id="unity-canvas" width="1280" height="790" style="width: 100vw; height: 100vh; cursor: default;"></canvas>
+      <div id="unity-loading-bar" style="display: none;">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full" style="width: 100%;"></div>
+        </div>
+      </div>
+      <div id="unity-mobile-warning">
+        WebGL builds are not supported on mobile devices.
+      </div>
+      <!-- <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">Test2</div>
+      </div>
+      <div>
+        <button type="button" onclick="activate()">activate</button>
+        <button type="button" onclick="deactivate()">deactivate</button>
+      </div> -->
+    </div>
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/webgl.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/webgl.data.unityweb",
+        frameworkUrl: buildUrl + "/webgl.framework.js",
+        codeUrl: buildUrl + "/webgl.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "NN",
+        productName: "huduner",
+        productVersion: "0.1",
+      };
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      // var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        config.devicePixelRatio = 1;
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
+      } else {
+        canvas.style.width = "100vw";
+        canvas.style.height = "100vh";
+      }
+      loadingBar.style.display = "block";
+
+
+      var unityGame;
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+         // console.log(progress);
+        }).then((unityInstance) => {
+
+          unityGame = unityInstance;
+
+          loadingBar.style.display = "none";
+          // fullscreenButton.onclick = () => {
+          //   unityInstance.SetFullscreen(1);
+          // };
+     // setTimeout(function() { console.log('load_model')
+       //   window.parent.postMessage({type:'loadModelEnd',data:{}},'*')}, 2500);
+         // console.log('load_model')
+	 // window.parent.postMessage({type:'loadModelEnd',data:{}},'*')
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+
+      window.addEventListener('message',function(event) {
+        console.log('received response:  ',event.data);
+        const { type, data } = event.data;
+        if(window[type]) {
+          window[type](data);  
+        }
+      }, false)
+
+      var activate = (visemeString) => {
+        unityGame.SendMessage('Body_up_mod',"talk",visemeString)
+        unityGame.SendMessage('Doctor2',"talk","true");
+        console.log("send msg to unity : TALK")
+        var myDate = new Date()
+        console.log(myDate.toLocaleString())
+      }
+
+      var deactivate = () => {
+        unityGame.SendMessage('Doctor2',"talk","false");
+        console.log("send msg to unity : IDLE")
+      }
+      var action = (act)=> {
+        unityGame.SendMessage('Doctor2',"act",act);
+	console.log("send msg to unity : action "+act)
+      }
+     var visemeclean = () =>{
+	unityGame.SendMessage('Body_up_mod',"idle","")
+        console.log("send msg to unity : visemeClean")
+     }
+     var pause = () =>{
+        unityGame.SendMessage('Body_up_mod','pause'," ")
+        console.log("send msg to unity : pause")
+    }
+     var continuetalk = () =>{
+        unityGame.SendMessage('Body_up_mod','continueTalk'," ")
+        console.log("send msg to unity : continue talk")
+    }
+     var test = () =>{
+	activate(" ");
+       
+        action("4");
+     }
+     var OnAppReady=() =>{
+	console.log('load_model')
+        window.parent.postMessage({type:'loadModelEnd',data:{}},'*')
+     } 
+     var onAction = (id,state) =>{
+        console.log('on action ' + id + ' status:' + state)
+        //window.pa
+        //window.parent.postMessage({type:'onAction',data:{}},'*')
+
+   }
+   
+   </script><script src="./webgl.loader.js.download"></script>
+  
+
+<script src="blob:https://ke-test-server.chinaeast2.cloudapp.chinacloudapi.cn/cbdc6392-2ee6-405c-8229-591da25f6def"></script></body></html>
